@@ -1,0 +1,32 @@
+---
+title: "Reproducible Document"
+author: "rostools"
+format: html
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+## About me
+- Line 
+- FGM
+I am a *PHD student* in **Kim Ravnskjaer** lab 
+
+```{r}
+3*3
+```
+
+
+
+## Writing R code 
+
+2 + 2 
+
+```{r}
+2+2
+```
+
+
+
+
