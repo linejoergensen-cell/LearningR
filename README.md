@@ -5,7 +5,7 @@ rostools teaching R
 # LearningR:
 
 TODO: Give a brief description of what your project is about
-Jeg skal lære R
+Jeg skal lære R - også i morgen 
 
 This project...
 
