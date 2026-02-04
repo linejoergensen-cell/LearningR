@@ -6,6 +6,9 @@ format: html
 
 ```{r setup}
 library(tidyverse)
+
+post_meal_data <- read_csv2(here::here("data/post-meal-insulin.csv"))
+
 ```
 
 ## About me
@@ -29,6 +32,13 @@ I am a *PHD student* in **Kim Ravnskjaer** lab
 
 ## Testing for Git
 Sol i øjne
+
+## Showing the data 
+```{r}
+post_meal_data
+
+glimpse(post_meal_data)
+```
 
 
 
