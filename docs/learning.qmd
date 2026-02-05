@@ -230,3 +230,54 @@ tidied_post_meal_data |>
     y = "Insulin to glucose ratio"
   )
 ```
+
+##Exercise creating multi-dimensional plots 
+
+```{r}
+#| label: fig-multidimensional
+#| fig-cap: "Two, mult-dimensional plots of our data."
+#| fig-subcap:
+#|   - "Distribution of percent body fat by group and age category."
+#|   - "Relationship between BMI and bone mineral density, split by insulin sensitivity."
+#| layout-ncol: 2
+# Task 1.
+post_meal_data |>
+  mutate(
+    percent_body_fat = (Fat.mass.DXA / Weight) * 100,
+    young = if_else(Age < 40, "Young", "Old")
+  ) |>
+  ggplot(aes(x = Group, y = percent_body_fat, colour = young)) +
+  geom_jitter(width = 0.2)
+
+# Task 2.
+post_meal_data |>
+  mutate(
+    insulin_glucose_ratio = (auc_ins / auc_pg),
+    insulin_insensitive = if_else(insulin_glucose_ratio > mean(insulin_glucose_ratio), "Insensitive", "Sensitive")
+  ) |>
+  ggplot(aes(x = BMI, y = Bone.mineral.DXA, colour = insulin_insensitive)) +
+  geom_point() +
+  geom_smooth() +
+  facet_grid(cols = vars(insulin_insensitive))
+```
+
+## Exercise changing colours
+
+```{r}
+post_meal_data |>
+  mutate(hyperglycemia = if_else(glykemi == 1, "Yes", "No")) |>
+  ggplot(aes(x = Group, fill = hyperglycemia)) +
+  geom_bar(position = position_dodge()) +
+  scale_fill_viridis_d(option = "cividis")
+
+post_meal_data |>
+  ggplot(aes(x = auc_pg, y = auc_ins, colour = BMI)) +
+  geom_point() +
+  scale_colour_viridis_c(option = "inferno")
+
+
+```
+
+
+
+
