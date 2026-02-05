@@ -274,9 +274,42 @@ post_meal_data |>
   ggplot(aes(x = auc_pg, y = auc_ins, colour = BMI)) +
   geom_point() +
   scale_colour_viridis_c(option = "inferno")
-
-
 ```
+
+## calculating summary statistics
+```{r}
+tidied_post_meal_data |>
+  summarise(
+    max_bmi = max(BMI),
+    mean_bmi = mean(BMI),
+    min_bmi = min(BMI)
+  )
+```
+
+## Summerise with group by
+```{r}
+tidied_post_meal_data |>
+  group_by(Group) |>
+  summarise(
+    mean_age = mean(Age),
+    mean_bmi = mean(BMI)
+  ) |>
+  ungroup()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
