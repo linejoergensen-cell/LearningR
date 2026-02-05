@@ -294,21 +294,20 @@ tidied_post_meal_data |>
     mean_age = mean(Age),
     mean_bmi = mean(BMI)
   ) |>
-  ungroup()
+  ungroup() |>
+  knitr::kable()
+# knitr::kable function used to make table
+
+# making the table prettier
+tidied_post_meal_data |>
+  group_by(Group) |>
+  summarise(
+    "Mean Age (yrs)" = round(mean(Age), 1),
+    "Mean BMI (kg/m^2^)" = round(mean(BMI), 1)
+  ) |>
+  ungroup() |>
+  knitr::kable()
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
